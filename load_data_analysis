@@ -1,0 +1,74 @@
+lapply(c(
+  c("sf","rjson","data.table","tidyverse","lubridate","plotly","rstudioapi","readxl","scales","ggrepel",
+    "ggpmisc","hrbrthemes","ggpubr","tidylog","ggperRPkgs")
+), function(x){
+  if(x%in%installed.packages()){
+    require(x)
+  }else{
+    install.packages(x)
+    require(x)
+  }
+})
+
+## Themes
+{
+  theme1<-theme_minimal()+
+    theme(
+      panel.grid = element_blank(),
+      axis.text = element_text(color="black",size=12),
+      text = element_text(family = font_tw),
+      title = element_text(size=16,face="bold"),
+      axis.title = element_text(size=14,face="bold"),
+      legend.text = element_text(color="black",size=12)
+    )
+  theme2<-theme_minimal()+
+    theme(
+      panel.grid = element_blank(),
+      axis.text = element_text(color="black",size=12),
+      axis.text.x = element_text(angle = 45),
+      text = element_text(family = font_tw),
+      title = element_text(size=16,face="bold"),
+      axis.title = element_text(size=14,face="bold"),
+      legend.text = element_text(color="black",size=12)
+    )
+  theme3<-theme_minimal()+
+    theme(
+      axis.text = element_text(color="black",size=12),
+      axis.text.x = element_text(angle = 45),
+      text = element_text(family = font_tw),
+      title = element_text(size=16,face="bold"),
+      axis.title = element_text(size=14,face="bold"),
+      legend.text = element_text(color="black",size=12)
+    )
+  laranja_sarto<-"#F88A27"
+  flextheme<-function(x){
+    x %>% 
+      font(fontname = "Montserrat",part="all") %>% 
+      fontsize(size=16,part = "header") %>% 
+      fontsize(size=14,part="body") %>% 
+      bold(part="header") %>% 
+      align(align = "center",part="all") %>% 
+      bg(bg="#00BFC4",part="header") %>% 
+      return()
+  }
+  
+}
+
+##functions
+{
+  loc.label<-function(labels,groups=1){
+    if(!is.numeric(labels)){stop("labels must be numeric")}
+    dt<-data.frame(
+      a=labels,
+      b=groups
+    )
+    dt %>% 
+      group_by(b) %>% 
+      mutate(a=1-(cumsum(a)-a/2)) %>% 
+      ungroup() %>% 
+      select(a) %>% 
+      as.matrix() %>% 
+      as.vector() %>% 
+      return()
+  }
+}
