@@ -4,12 +4,34 @@ lapply(c(
     "shinythemes","shinyTime","htmlTable","DT")
 ), function(x){
   if(x%in%installed.packages()){
-    require(x)
+    return()
   }else{
     install.packages(x)
-    require(x)
   }
 })
+
+require(sf)
+require(rjson)
+require(data.table)
+require(tidyverse)
+require(lubridate)
+require(plotly)
+require(rstudioapi)
+require(readxl)
+require(scales)
+require(ggrepel)
+require(ggpmisc)
+require(hrbrthemes)
+require(ggpubr)
+require(tidylog)
+require(shiny)
+require(shinydashboard)
+require(shinyjs)
+require(shinyWidgets)
+require(shinythemes)
+require(shinyTime)
+require(htmlTable)
+require(DT)
 
 ## Themes
 {
