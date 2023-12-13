@@ -1,6 +1,6 @@
 lapply(c(
-  c("sf","rjson","data.table","tidyverse","lubridate","plotly","rstudioapi","readxl","scales","ggrepel",
-    "ggpmisc","hrbrthemes","ggpubr","tidylog","ggperRPkgs")
+  "sf","rjson","data.table","tidyverse","lubridate","plotly","rstudioapi","readxl","scales","ggrepel",
+  "ggpmisc","hrbrthemes","ggpubr","tidylog","ggperRPkgs"
 ), function(x){
   if(x%in%installed.packages()){
     require(x)
