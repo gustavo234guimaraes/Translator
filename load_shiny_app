@@ -32,6 +32,7 @@ require(shinythemes)
 require(shinyTime)
 require(htmlTable)
 require(DT)
+require(flextable)
 
 ## Themes
 {
