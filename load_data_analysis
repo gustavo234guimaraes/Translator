@@ -29,7 +29,7 @@ require(ggperRPkgs)
 
 ## Themes
 {
-  theme1<-theme_minimal()+
+  theme_minimal_btt<-theme_minimal()+
     theme(
       panel.grid = element_blank(),
       axis.text = element_text(color="black",size=12),
@@ -38,7 +38,16 @@ require(ggperRPkgs)
       axis.title = element_text(size=14,face="bold"),
       legend.text = element_text(color="black",size=12)
     )
-  theme2<-theme_minimal()+
+theme_minimal_tt<-theme_minimal()+
+    theme(
+      panel.grid = element_blank(),
+      axis.text = element_text(color="black",size=12),
+      text = element_text(family = font_tw),
+      title = element_text(size=16,face="bold"),
+      axis.title = element_text(size=14,face="bold"),
+      legend.text = element_text(color="black",size=12)
+    )
+  theme_minimal_bttx<-theme_minimal()+
     theme(
       panel.grid = element_blank(),
       axis.text = element_text(color="black",size=12),
@@ -48,7 +57,7 @@ require(ggperRPkgs)
       axis.title = element_text(size=14,face="bold"),
       legend.text = element_text(color="black",size=12)
     )
-  theme3<-theme_minimal()+
+  theme_minimal_ttx<-theme_minimal()+
     theme(
       axis.text = element_text(color="black",size=12),
       axis.text.x = element_text(angle = 45),
