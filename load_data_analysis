@@ -80,8 +80,7 @@ require(ggperRPkgs)
   }
 }
 
-set_wd<-menu(c("yes","no"),title = "Do you want set work directory?")
-
+wd<-function(){
 if(set_wd==1){
   if(.Platform$GUI=="RStudio"){
       library(rstudioapi)
@@ -96,3 +95,5 @@ if(set_wd==1){
       setwd(tcltk::tk_choose.dir(caption = "Select WD"))
     }
 }
+}
+
