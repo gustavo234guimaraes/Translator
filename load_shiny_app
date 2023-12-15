@@ -96,3 +96,19 @@ require(flextable)
       return()
   }
 }
+set_wd<-menu(c("yes","no"),title = "Do you want set work directory?")
+
+if(set_wd==1){
+  if(.Platform$GUI=="RStudio"){
+      library(rstudioapi)
+    if(getActiveDocumentContext()$path==""){
+      setwd(enc2utf8(selectDirectory(caption = "Select WD")))
+    }else{
+      getActiveDocumentContext()$path %>%
+        dirname() %>%
+        setwd()
+    }
+  }else{
+      setwd(tcltk::tk_choose.dir(caption = "Select WD"))
+    }
+}
