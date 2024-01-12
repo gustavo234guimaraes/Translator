@@ -36,7 +36,8 @@ require(ggperRPkgs)
       text = element_text(family = font_tw),
       title = element_text(size=16,face="bold"),
       axis.title = element_text(size=14,face="bold"),
-      legend.text = element_text(color="black",size=12)
+      legend.text = element_text(color="black",size=12),
+      strip.text = element_text(family = font_tw,size = 14,color = "black",face = "bold")
     )
 theme_minimal_tt<-theme_minimal()+
     theme(
@@ -44,14 +45,16 @@ theme_minimal_tt<-theme_minimal()+
       text = element_text(family = font_tw),
       title = element_text(size=16,face="bold"),
       axis.title = element_text(size=14,face="bold"),
-      legend.text = element_text(color="black",size=12)
+      legend.text = element_text(color="black",size=12),
+      strip.text = element_text(family = font_tw,size = 14,color = "black",face = "bold")
     )
 theme_tt<-theme(
       axis.text = element_text(color="black",size=12),
       text = element_text(family = font_tw),
       title = element_text(size=16,face="bold"),
       axis.title = element_text(size=14,face="bold"),
-      legend.text = element_text(color="black",size=12)
+      legend.text = element_text(color="black",size=12),
+      strip.text = element_text(family = font_tw,size = 14,color = "black",face = "bold")
     )
   theme_minimal_bttx<-theme_minimal()+
     theme(
@@ -61,7 +64,8 @@ theme_tt<-theme(
       text = element_text(family = font_tw),
       title = element_text(size=16,face="bold"),
       axis.title = element_text(size=14,face="bold"),
-      legend.text = element_text(color="black",size=12)
+      legend.text = element_text(color="black",size=12),
+      strip.text = element_text(family = font_tw,size = 14,color = "black",face = "bold")
     )
   theme_minimal_ttx<-theme_minimal()+
     theme(
@@ -70,7 +74,8 @@ theme_tt<-theme(
       text = element_text(family = font_tw),
       title = element_text(size=16,face="bold"),
       axis.title = element_text(size=14,face="bold"),
-      legend.text = element_text(color="black",size=12)
+      legend.text = element_text(color="black",size=12),
+      strip.text = element_text(family = font_tw,size = 14,color = "black",face = "bold")
     )
   laranja_sarto<-"#F88A27"
   
