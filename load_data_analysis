@@ -11,6 +11,7 @@ lapply(c(
 if("LDA"%in%installed.packages()==FALSE){
 remotes::install_github('gustavo234guimaraes/LDA',dependencies = F)
 }
+suppressMessages({
 require(sf)
 require(rjson)
 require(data.table)
@@ -27,4 +28,4 @@ require(ggpubr)
 require(tidylog)
 require(shadowtext)
 require(LDA)
-
+})
