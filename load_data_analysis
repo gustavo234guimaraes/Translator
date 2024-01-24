@@ -8,6 +8,9 @@ lapply(c(
     install.packages(x)
   }
 })
+if("LDA"%in%installed.packages()==FALSE){
+remotes::install_github('gustavo234guimaraes/LDA',dependencies = F)
+}
 require(sf)
 require(rjson)
 require(data.table)
@@ -22,98 +25,6 @@ require(ggpmisc)
 require(hrbrthemes)
 require(ggpubr)
 require(tidylog)
-require(ggperRPkgs)
-
-
-
-
-## Themes
-{
-  theme_minimal_btt<-theme_minimal()+
-    theme(
-      panel.grid = element_blank(),
-      axis.text = element_text(color="black",size=12),
-      text = element_text(family = font_tw),
-      title = element_text(size=16,face="bold"),
-      axis.title = element_text(size=14,face="bold"),
-      legend.text = element_text(color="black",size=12),
-      strip.text = element_text(family = font_tw,size = 14,color = "black",face = "bold")
-    )
-theme_minimal_tt<-theme_minimal()+
-    theme(
-      axis.text = element_text(color="black",size=12),
-      text = element_text(family = font_tw),
-      title = element_text(size=16,face="bold"),
-      axis.title = element_text(size=14,face="bold"),
-      legend.text = element_text(color="black",size=12),
-      strip.text = element_text(family = font_tw,size = 14,color = "black",face = "bold")
-    )
-theme_tt<-theme(
-      axis.text = element_text(color="black",size=12),
-      text = element_text(family = font_tw),
-      title = element_text(size=16,face="bold"),
-      axis.title = element_text(size=14,face="bold"),
-      legend.text = element_text(color="black",size=12),
-      strip.text = element_text(family = font_tw,size = 14,color = "black",face = "bold")
-    )
-  theme_minimal_bttx<-theme_minimal()+
-    theme(
-      panel.grid = element_blank(),
-      axis.text = element_text(color="black",size=12),
-      axis.text.x = element_text(angle = 45),
-      text = element_text(family = font_tw),
-      title = element_text(size=16,face="bold"),
-      axis.title = element_text(size=14,face="bold"),
-      legend.text = element_text(color="black",size=12),
-      strip.text = element_text(family = font_tw,size = 14,color = "black",face = "bold")
-    )
-  theme_minimal_ttx<-theme_minimal()+
-    theme(
-      axis.text = element_text(color="black",size=12),
-      axis.text.x = element_text(angle = 45),
-      text = element_text(family = font_tw),
-      title = element_text(size=16,face="bold"),
-      axis.title = element_text(size=14,face="bold"),
-      legend.text = element_text(color="black",size=12),
-      strip.text = element_text(family = font_tw,size = 14,color = "black",face = "bold")
-    )
-  laranja_sarto<-"#F88A27"
-  
-}
-
-##functions
-{
-  loc.label<-function(labels,groups=1){
-    if(!is.numeric(labels)){stop("labels must be numeric")}
-    dt<-data.frame(
-      a=labels,
-      b=groups
-    )
-    dt %>% 
-      group_by(b) %>% 
-      mutate(a=1-(cumsum(a)-a/2)) %>% 
-      ungroup() %>% 
-      select(a) %>% 
-      as.matrix() %>% 
-      as.vector() %>% 
-      return()
-  }
-}
-
-wd<-function(){
-if(set_wd==1){
-  if(.Platform$GUI=="RStudio"){
-      library(rstudioapi)
-    if(getActiveDocumentContext()$path==""){
-      setwd(enc2utf8(selectDirectory(caption = "Select WD")))
-    }else{
-      getActiveDocumentContext()$path %>%
-        dirname() %>%
-        setwd()
-    }
-  }else{
-      setwd(tcltk::tk_choose.dir(caption = "Select WD"))
-    }
-}
-}
+require(shadowtext)
+require(LDA)
 
