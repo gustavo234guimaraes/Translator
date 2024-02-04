@@ -11,7 +11,7 @@ translate_text<-function(text,from,to,drive){
 translate_text.character<-function(
   text="Text translated automatically using R",
   from="en",
-  to="pt",
+  to="pt-BR",
   drive
 ){
   
@@ -35,7 +35,7 @@ translate_text.character<-function(
       
       result<-try(drive$client$findElements("d-textarea",using="css")[[2]])
       n<-0
-      while ("try-error"%in%class(result)|n<8) {
+      while ("try-error"%in%class(result)&n<8) {
         drive$client$refresh()
         result<-try(drive$client$findElements("d-textarea",using="css")[[2]])
         n<-n+1
@@ -61,7 +61,7 @@ translate_text.character<-function(
 
 translate_text.factor<-function(
     text="Texto traduzido automáticamente usando R",
-    from="pt",
+    from="pt-BR",
     to="en",
     drive
 ){
@@ -84,7 +84,7 @@ translate_text.factor<-function(
       
       result<-try(drive$client$findElements("d-textarea",using="css")[[2]])
       n<-0
-      while ("try-error"%in%class(result)|n<8) {
+      while ("try-error"%in%class(result)&n<8) {
         drive$client$refresh()
         result<-try(drive$client$findElements("d-textarea",using="css")[[2]])
         n<-n+1
