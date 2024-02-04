@@ -1,0 +1,12 @@
+Package: Translator
+Type: Package
+Title: Fast way to translate texts from and to any language using R.
+Version: 0.1.0
+Author: Gustavo Guimarães
+Maintainer: Gustavo Guimarães <caiogcg.mobilidade@gmail.com>
+Description: This package is able to translate any text to another language using WebScraping from DeepL.
+Imports: netstat
+Depends: RSelenium, dplyr, stringr
+License: None
+Encoding: UTF-8
+LazyData: true
