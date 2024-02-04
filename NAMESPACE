@@ -1,4 +1,4 @@
 export(get_driver,translate_text)
-S3method(get_driver,ddefault)
+S3method(get_driver,default)
 S3method(translate_text,character)
 S3method(translate_text,factor)
