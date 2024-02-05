@@ -21,31 +21,62 @@ translate_text.character<-function(
     if(is.na(x)|is.null(x)|str_remove_all(x," ")==""){
       return(NA)
     }else{
-      text<-str_replace_all(
-        x,
-        pattern = " ",
-        replacement = "%20"
-      )
-      drive$client$navigate(paste0(
-        "https://www.deepl.com/pt-BR/translator#",
-        from,"/",to,"/",
-        text
-      ))
-      Sys.sleep(1.6)
       
-      result<-try(drive$client$findElements("d-textarea",using="css")[[2]])
-      n<-0
-      while ("try-error"%in%class(result)&n<8) {
-        drive$client$refresh()
+      if(str_length(x)>1400){
+        text<-text_split(x)
+        resp<-c()
+        
+        for (i in 1:length(text)) {
+          cat("\r","Translating part ",i," of ",length(text)," of the text")
+          drive$client$navigate(paste0(
+            "https://www.deepl.com/pt-BR/translator#",
+            from,"/",to,"/",
+            text[i]
+          ))
+          Sys.sleep(wait(text))
+          
+          result<-try(drive$client$findElements("d-textarea",using="css")[[2]])
+          n<-0
+          while ("try-error"%in%class(result)&n<8) {
+            drive$client$refresh()
+            result<-try(drive$client$findElements("d-textarea",using="css")[[2]])
+            n<-n+1
+          }
+          
+          resp<-c(resp,result$getElementText()[[1]])
+          
+          
+        }
+        
+        return(paste(resp,collapse = " "))
+        
+      }else{
+        text<-text_link(x)
+        drive$client$navigate(paste0(
+          "https://www.deepl.com/pt-BR/translator#",
+          from,"/",to,"/",
+          text
+        ))
+        Sys.sleep(wait(text))
+        
         result<-try(drive$client$findElements("d-textarea",using="css")[[2]])
-        n<-n+1
+        n<-0
+        while ("try-error"%in%class(result)&n<8) {
+          drive$client$refresh()
+          result<-try(drive$client$findElements("d-textarea",using="css")[[2]])
+          n<-n+1
+        }
+        
+        n<-0
+        while(resp==""&n<8){
+          Sys.sleep(0.2)
+          resp<-result$getElementText()[[1]]
+          n<-n+1
+        }
+        
+        return(resp)
       }
       
-      
-      
-      
-      result$getElementText()[[1]] %>% 
-        return()
     }
     
     
@@ -70,19 +101,17 @@ translate_text.factor<-function(
   
   new.lvs<-lapply(lvs, function(x){
     
-    text<-str_replace_all(
-        x,
-        pattern = " ",
-        replacement = "%20"
-      )
+    text<-text_link(x)
       drive$client$navigate(paste0(
         "https://www.deepl.com/pt-BR/translator#",
         from,"/",to,"/",
         text
       ))
-      Sys.sleep(1.6)
+      Sys.sleep(wait(text))
+      
       
       result<-try(drive$client$findElements("d-textarea",using="css")[[2]])
+      
       n<-0
       while ("try-error"%in%class(result)&n<8) {
         drive$client$refresh()
@@ -90,10 +119,14 @@ translate_text.factor<-function(
         n<-n+1
       }
       
+      n<-0
+      while(resp==""&n<8){
+        Sys.sleep(0.2)
+        resp<-result$getElementText()[[1]]
+        n<-n+1
+      }
       
-      
-      result$getElementText()[[1]] %>% 
-        return()
+      return(resp)
     
     
   }) %>% 
@@ -105,13 +138,8 @@ translate_text.factor<-function(
   
 }
 
-a<-factor(c("Baixo","Médio","Alto","Baixo"),levels = c("Baixo","Médio","Alto")) 
 
-levels(a)
 
-firefox<-get_driver()
-
-translate_text.factor(text = a,drive = firefox)
 
 
 
