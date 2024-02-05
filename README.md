@@ -2,8 +2,9 @@ Translator
 ================
 
 Translator is a package for translate text using DeepL and WebScraping.
-This package has only two functions, the first obtain a RSelenium drive
-for firefox browser, and the second use the browser to translate texts.
+This package has only two functions, the first get_driver() obtain a
+RSelenium drive for firefox browser, and the second translate_text() use
+the browser to translate texts.
 
 ## Instalação
 
@@ -24,7 +25,7 @@ firefox<-get_driver()
 toc()
 ```
 
-    ## 11.26 sec elapsed
+    ## 9.19 sec elapsed
 
 ``` r
 # The default is from=en and to=pt
@@ -32,13 +33,13 @@ tic()
 translate_text(text = "Text translated automatically using R",drive=firefox)
 ```
 
-    ## [1] ""
+    ## [1] "Texto traduzido automaticamente usando R"
 
 ``` r
 toc()
 ```
 
-    ## 4.79 sec elapsed
+    ## 4.67 sec elapsed
 
 ``` r
 tic()
@@ -55,7 +56,7 @@ translate_text(text =c(
 toc()
 ```
 
-    ## 3.54 sec elapsed
+    ## 3.19 sec elapsed
 
 ### Translate a factor list
 
@@ -80,6 +81,7 @@ chickwts$feed
     ## Levels: casein horsebean linseed meatmeal soybean sunflower
 
 ``` r
+tic()
 chickwts %>% 
   mutate(feed=translate_text(feed,from="en",to="pt-BR",drive=firefox)) %>% 
   .$feed
@@ -106,6 +108,13 @@ chickwts %>%
     ## 6 Levels: caseína fava de cavalo semente de linhaça farinha de carne ... girassol
 
 ``` r
+toc()
+```
+
+    ## 9.23 sec elapsed
+
+``` r
+tic()
 tibble(
   cidade=c("Fortaleza","Recife","Salvador"),
   info=c(
@@ -118,6 +127,21 @@ tibble(
   .$information
 ```
 
-    ## [1] ""                                                                                                                                                            
-    ## [2] "Recife, the capital of the state of Pernambuco in northeastern Brazil, is distinguished by its many rivers, bridges, islets, peninsulas and street carnival."
-    ## [3] ""
+    ## [1] "Fortaleza is the capital of the state of Ceará, in northeastern Brazil. The city is known for its beaches, with red cliffs, palm trees, dunes and lagoons."           
+    ## [2] "Recife, the capital of the state of Pernambuco in northeastern Brazil, is distinguished by its many rivers, bridges, islets, peninsulas and street carnival."         
+    ## [3] "Salvador, the capital of the state of Bahia in northeastern Brazil, is known for its Portuguese colonial architecture, Afro-Brazilian culture and tropical coastline."
+
+``` r
+toc()
+```
+
+    ## 5.82 sec elapsed
+
+### Close drive
+
+``` r
+close(firefox)
+```
+
+    ## [[1]]
+    ## NULL
