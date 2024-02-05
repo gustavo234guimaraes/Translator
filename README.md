@@ -1,4 +1,4 @@
-translate_text
+Translator
 ================
 
 Translator is a package for translate text using DeepL and WebScraping.
