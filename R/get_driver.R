@@ -26,6 +26,7 @@ get_driver.default<-function(headless=TRUE){
                                                        "moz:firefoxOptions"=list(args=ifelse(headless,
                                                                                              list('-headless',"-sessionTimeout 57868143"),
                                                                                              list('-sessionTimeout 57868143') ) )))
+    drive$client$navigate("https://www.deepl.com/pt-BR/translator")
   }
   
   return(driver)
