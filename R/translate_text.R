@@ -66,7 +66,7 @@ translate_text.character<-function(
           result<-try(drive$client$findElements("d-textarea",using="css")[[2]])
           n<-n+1
         }
-        
+        resp<-result$getElementText()[[1]]
         n<-0
         while(resp==""&n<8){
           Sys.sleep(0.2)
@@ -119,6 +119,7 @@ translate_text.factor<-function(
         n<-n+1
       }
       
+      resp<-result$getElementText()[[1]]
       n<-0
       while(resp==""&n<8){
         Sys.sleep(0.2)
