@@ -4,7 +4,8 @@ Translator
 Translator is a package for translate text using DeepL and WebScraping.
 This package has only two functions, the first obtain a RSelenium drive
 for firefox browser, and the second use the browser to translate texts.
-\## Instalação
+
+## Instalação
 
 You can install the development version from GitHub with
 
