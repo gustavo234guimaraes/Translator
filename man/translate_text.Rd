@@ -25,7 +25,7 @@ A character. Short code for the target language of the text.
 }
 
   \item{drive}{
-A rsClientServer. A driver created by get_driver (recommended). Or a driver created by RSelenium::rsDriver
+A rsClientServer. A driver created by get_browser (recommended). Or a driver created by RSelenium::rsDriver
 }
 
 
