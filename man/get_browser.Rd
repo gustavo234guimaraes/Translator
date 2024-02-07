@@ -1,14 +1,14 @@
-\name{get_driver}
-\alias{get_driver}
+\name{get_browser}
+\alias{get_browser}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-Get a driver to a firefox browser
+Start a selenium server and browser (Firefox), with Rselenium
 }
 \description{
 This function uses RSelenium to obtain a driver for a Firefox browser that will be used to obtain the translations. Do you need install firefox in your machine before use.
 }
 \usage{
-get_driver()
+get_browser()
 }
 
 
@@ -28,9 +28,9 @@ RSelenium
 }
 \examples{
 
-firefox<-get_driver()
+firefox<-get_browser()
 
 ## To execute without headless
-firefox<-get_driver(FALSE)
+firefox<-get_browser(FALSE)
 
 }

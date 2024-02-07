@@ -1,11 +1,11 @@
 
-get_driver<-function(headless){
-  UseMethod("get_driver")
+get_browser<-function(headless){
+  UseMethod("get_browser")
 }
 
 
 
-get_driver.default<-function(headless=TRUE){
+get_browser.default<-function(headless=TRUE){
   
   driver<-RSelenium::rsDriver(browser = c("firefox"),port = netstat::unassigned_ports()[sample(1:1000,1)],verbose = F,
                               extraCapabilities=list(acceptInsecureCerts=TRUE,
