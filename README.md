@@ -2,7 +2,7 @@ Translator
 ================
 
 Translator is a package for translate text using DeepL and WebScraping.
-This package has only two functions, the first get_driver() obtain a
+This package has only two functions, the first get_browser() obtain a
 RSelenium drive for firefox browser, and the second translate_text() use
 the browser to translate texts.
 
@@ -21,11 +21,11 @@ remotes::install_github("gustavo234guimaraes/Translator")
 ``` r
 library(Translator)
 tic()
-firefox<-get_driver()
+firefox<-get_browser()
 toc()
 ```
 
-    ## 9.19 sec elapsed
+    ## 13.03 sec elapsed
 
 ``` r
 # The default is from=en and to=pt
@@ -39,7 +39,7 @@ translate_text(text = "Text translated automatically using R",drive=firefox)
 toc()
 ```
 
-    ## 4.67 sec elapsed
+    ## 4.94 sec elapsed
 
 ``` r
 tic()
@@ -56,7 +56,7 @@ translate_text(text =c(
 toc()
 ```
 
-    ## 3.19 sec elapsed
+    ## 3.41 sec elapsed
 
 ### Translate a factor list
 
@@ -111,7 +111,7 @@ chickwts %>%
 toc()
 ```
 
-    ## 9.23 sec elapsed
+    ## 9.99 sec elapsed
 
 ``` r
 tic()
@@ -135,12 +135,12 @@ tibble(
 toc()
 ```
 
-    ## 5.82 sec elapsed
+    ## 6.12 sec elapsed
 
-### Close drive
+### Close browser
 
 ``` r
-close(firefox)
+close_browser(firefox)
 ```
 
     ## [[1]]
